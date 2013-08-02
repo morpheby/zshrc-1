@@ -89,6 +89,11 @@ function promptSetup () {
 
     PR_SIGN+="%F{white}%b"
 
+    # Current directory notation
+    PWD_PART=$NOCOLOR
+    PWD_PART+="%b%F{17}"
+    PWD_PART+="%~"
+    
 
 
     # http://unix.stackexchange.com/questions/1022/is-it-possible-to-display-stuff-below-the-prompt-at-a-prompt
@@ -97,7 +102,8 @@ function promptSetup () {
     
     # Finally, the prompt.
     PS1=$'\n'                     # newline (specially quotet, see zsh FAQ 3.13)
-    PS1+=%(?..$'%F{136}%Breturned %?\n')    # output last error number if present
+    PS1+=%(?..$'%K{12}%F{46}%Breturned %?\n')    # output last error number if present
+    PS1+=$PWD_PART$'\n'
     PS1+="%{$terminfo_down_sc$VCS_LINE$terminfo[rc]%}" # the second line
     PS1+=$PR_STITLE               # tmux title if present
     PS1+=$PR_VCSSIGN              # version control part if present
