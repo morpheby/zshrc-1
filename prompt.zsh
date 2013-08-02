@@ -58,10 +58,13 @@ function promptSetup () {
         VCS_LINE+="($VCS_PROJECTNAME) "
     fi
 
-    # rootshell gets another prompt sign
+    # prepend username
     CURRENT_USER=`whoami`
+
+    # rootshell gets another prompt sign
     PR_SIGN=$NOCOLOR
     PR_SIGN+="%F{160}%B"
+    PR_SIGN+="$CURRENT_USER"
 
     # prepend the hostname if we are outside
     if [[ "$MYHOSTEXPRESSION" == "" ]]; then
@@ -72,7 +75,7 @@ function promptSetup () {
         # we are on our home desktop
     else
         # we are outside on a server
-        PR_SIGN+="`hostname` "
+        PR_SIGN+="@`hostname -s` "
     fi
 
     # setup the main sign
@@ -96,7 +99,7 @@ function promptSetup () {
     PS1+="%{$terminfo_down_sc$VCS_LINE$terminfo[rc]%}" # the second line
     PS1+=$PR_STITLE               # tmux title if present
     PS1+=$PR_VCSSIGN              # version control part if present
-    PS1+=%(?..'%F{136}%B%'?)       # output last error number if present
+    PS1+=%(?..'%F{136}%B% '?)     # output last error number if present
     PS1+=$PR_SIGN                 # the user sign
     PS1+=" "                      # an additional space
 

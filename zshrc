@@ -33,7 +33,7 @@ sources+="$ZSH_CONFIG/private.zsh"
 sources+="$ZSH_CONFIG/completion.zsh"
 
 # fasd integration and config
-sources+="$ZSH_CONFIG/fasd.zsh"
+#sources+="$ZSH_CONFIG/fasd.zsh"
 
 # Private aliases and adoptions added at the very end (e.g. to start byuobu)
 sources+="$ZSH_CONFIG/private.final.zsh"
