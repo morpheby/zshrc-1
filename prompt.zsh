@@ -104,10 +104,10 @@ function promptSetup () {
     PS1=$'\n'                     # newline (specially quotet, see zsh FAQ 3.13)
     PS1+=%(?..$'%K{12}%F{46}%Breturned %?\n')    # output last error number if present
     PS1+=$PWD_PART$'\n'
-    PS1+="%{$terminfo_down_sc$VCS_LINE$terminfo[rc]%}" # the second line
     PS1+=$PR_STITLE               # tmux title if present
     PS1+=$PR_VCSSIGN              # version control part if present
     PS1+=$PR_SIGN                 # the user sign
+    PS1+="%{$terminfo_down_sc$VCS_LINE$terminfo[rc]%}" # the second line
     PS1+=" "                      # an additional space
 
     # reset the tmux title
