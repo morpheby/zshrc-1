@@ -93,13 +93,14 @@ function promptSetup () {
 
     # http://unix.stackexchange.com/questions/1022/is-it-possible-to-display-stuff-below-the-prompt-at-a-prompt
     terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
-
+    
+    
     # Finally, the prompt.
     PS1=$'\n'                     # newline (specially quotet, see zsh FAQ 3.13)
+    PS1+=%(?..$'%F{136}%Breturned %?\n')    # output last error number if present
     PS1+="%{$terminfo_down_sc$VCS_LINE$terminfo[rc]%}" # the second line
     PS1+=$PR_STITLE               # tmux title if present
     PS1+=$PR_VCSSIGN              # version control part if present
-    PS1+=%(?..'%F{136}%B% '?)     # output last error number if present
     PS1+=$PR_SIGN                 # the user sign
     PS1+=" "                      # an additional space
 
