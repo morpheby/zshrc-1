@@ -50,5 +50,5 @@ if [[ "$LSB_DISTRIBUTOR" == "archlinux" ]]; then
     alias status=" sudo systemctl status"
     alias restart=" sudo systemctl restart"
     alias reboot="sudo systemctl start reboot.target"
-#fi
+fi
 
